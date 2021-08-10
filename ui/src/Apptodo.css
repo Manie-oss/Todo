@@ -1,0 +1,38 @@
+.todo{
+    text-align:  center;
+    display: block;
+    margin: auto;
+  }
+
+.txt{
+    display: block;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  padding: 20px 10px;
+  width: 50%;
+  font-size: 23px;
+  font-weight: bold;
+  border-radius: 7px;
+  border: 2px solid black;
+}
+
+button{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+    width: 51%;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 7px;
+    border: 2px solid black;
+  }
+
+button:hover{
+    cursor: pointer;
+    transition: 0.5s all ease;
+    color:white;
+    background-color: rgb(78, 69, 69);
+  }
