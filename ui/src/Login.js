@@ -28,6 +28,7 @@ function Login(props) {
       if(response.data === 'Login Successful')
       {
         props.setIsLoggedIn(true);
+        props.setUserName(details.username);
       }
     })
     .catch((error) => {
@@ -56,14 +57,17 @@ function Login(props) {
 
   else{
     return (
-      <div className = "App">
+      <div className="background">
+        <p>Create your own notes</p>
+        <div className = "App">
         <form>
-        <input type = "text" placeholder = "UserName" onChange = {changedName} />
-        <input type = "password" placeholder = "Password" onChange = {changedPassword} />
+        <input type = "text" placeholder = "UserName" required = "required" onChange = {changedName} />
+        <input type = "password" placeholder = "Password" required = "required" onChange = {changedPassword} />
         <button type = "button" onClick = {() => createAccount(details)}>SignUp</button>
         <button type = "button" onClick = {() => logIn(details)}>LogIn</button>
         </form>
         <div>{details.resback}</div>
+      </div>
       </div>
     );    
   }

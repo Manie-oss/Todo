@@ -5,15 +5,16 @@ import { Route, Switch } from "react-router-dom";
 
 function App()
 {
+    const [user, setUserName] = useState("");
     const [isloggedin, setIsLoggedIn] = useState(false);
 
     return(
         <Switch>
             <Route exact path = "/login">
-                <Login isloggedin = {isloggedin} setIsLoggedIn = {setIsLoggedIn}/>
+                <Login isloggedin = {isloggedin} setIsLoggedIn = {setIsLoggedIn} user = {user} setUserName = {setUserName}/>
             </Route>
             <Route exact path = '/todo'>
-                <Todo isloggedin = {isloggedin} />
+                <Todo isloggedin = {isloggedin} user = {user} />
             </Route>
         </Switch>
     );

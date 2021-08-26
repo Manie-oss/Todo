@@ -32,28 +32,60 @@ app.post('/login', (req,res) => {
 app.post('/newaccount', (req, res) => {
     var name = req.body.username; 
     var pass = req.body.password;
+    
+    if(name === ""){
+        res.end("Please enter valid Username");
+    }
 
-    connection.query('select name from logindetails where name = ?', [name], (err, result, fields) => {
-        if(result.length === 0){
-            connection.query('insert into logindetails values(?, ?)', [name, pass], (err, result, fields) => {
-                if (err) {
-                    res.end(JSON.stringify(err));
+    else if(pass === ""){
+        res.end("Please enter valid Password");
+    }
+
+    else{
+        connection.query('select name from logindetails where name = ?', [name], (err, result, fields) => {
+            if(result.length === 0){
+                connection.query('insert into logindetails values(?, ?)', [name, pass], (err, result, fields) => {
+                    if (err) {
+                        res.end(JSON.stringify(err));
+                        return;
+                    }
+                    res.end('Account created.');
                     return;
-                }
-                res.end('Account created.');
+                })
+            }
+            else{
+                res.end('username already exists.')
                 return;
-            })
-        }
-        else{
-            res.end('username already exists.')
-            return;
-        }
-    })
+            }
+        })
+    }
+   
  })
 
- app.post('/save', (req,res) => {
-     var input = req.body.inputtext;
-     
+ app.post('/save-todo', (req,res) => {
+    var name = req.body.user;
+    var input = req.body.todo;
+    connection.query('insert into notes values(?, ?)', [name, input], (err, result, fields) =>{
+        if (err) {
+            res.end(JSON.stringify(err));
+            return;
+        }
+        res.end(input);
+        return;
+    })   
+ })
+
+ app.get('/all-notes', (req, res) => {
+     var name = req.query.user;
+    //  console.log(name)
+     connection.query('select note from notes where username = ?', [name], (err, result, fields) =>{
+        if (err) {
+            res.end(JSON.stringify(err));
+            return;
+        }
+        // console.log(result);
+        res.end(JSON.stringify(result));
+     })
  })
 
 

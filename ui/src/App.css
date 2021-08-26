@@ -4,6 +4,24 @@
   margin: auto;
 }
 
+.background{
+  /* margin: 0px; */
+  background-image: url(./images/login.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
+
+p{
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align:  center;
+    display: block;
+}
+
 input[type = text]{
   display: block;
   margin: auto;
@@ -15,6 +33,7 @@ input[type = text]{
   font-weight: bold;
   border-radius: 7px;
   border: 2px solid black;
+  background-color: rgb(240, 236, 236);
 }
 
 input[type = password]{
@@ -28,6 +47,7 @@ input[type = password]{
   font-weight: bold;
   border-radius: 7px;
   border: 2px solid black;
+  background-color: rgb(240, 236, 236);
 }
 
 button{
